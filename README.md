@@ -2,6 +2,8 @@
 
 A forkable terminal-style resume with placeholder content. Personalize one profile file, enable the command modules you want, and deploy the generated static site anywhere.
 
+![Default terminal resume template](docs/default-template.png)
+
 ## Start here
 
 ```bash
