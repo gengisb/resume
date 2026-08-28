@@ -1,0 +1,9 @@
+Pinned executable assets for the in-browser resume model.
+
+web-llm-0.2.84-d1ecb257.js
+Source: https://cdn.jsdelivr.net/npm/@mlc-ai/web-llm@0.2.84/+esm
+SHA-256: d1ecb2579991ee53fa4f00e2f1b76841419d7b2d48f64c7cdf23968a72f2eba5
+
+Qwen3.5-2B-q4f16_1-webgpu-b0f951d4.wasm
+Source: https://raw.githubusercontent.com/mlc-ai/binary-mlc-llm-libs/main/web-llm-models/v0_2_84/base/Qwen3.5-2B-q4f16_1_cs1k-webgpu.wasm
+SHA-256: b0f951d411e4fd59fe2af76be9328905ae30549e570a192a841c958b293ecd53

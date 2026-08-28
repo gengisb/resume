@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content" />
+    <meta name="theme-color" content="#1e1e1e" />
+    <title>Your Name | Interactive Terminal Resume</title>
+    <meta name="description" content="Explore my experience through an interactive terminal resume." />
+    <meta property="og:title" content="Your Name | Interactive Terminal Resume" />
+    <meta property="og:description" content="A modular, terminal-style portfolio and resume." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Your Name | Interactive Terminal Resume" />
+    <meta name="twitter:description" content="A modular, terminal-style portfolio and resume." />
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body>
+    <main class="terminal-shell">
+      <header class="topbar">
+        <div><strong data-terminal-name>Claude Code</strong><span data-terminal-version>resume-ui 1.0.0</span><i>|</i><span class="hide-mobile">unofficial terminal edition</span></div>
+        <span class="session">● session: resume</span>
+      </header>
+
+      <section class="profile-card">
+        <div class="welcome">
+          <h1><span class="desktop-only" data-profile-welcome>Welcome!</span><span class="mobile-only" data-profile-mobile-name>Your Name</span></h1>
+          <span class="pixel-bot" aria-hidden="true"><span class="pixel-ear left"></span><span class="pixel-ear right"></span><span class="pixel-eye left"></span><span class="pixel-eye right"></span><span class="pixel-feet"><i></i><i></i><i></i><i></i></span></span>
+          <p><span class="desktop-only" data-profile-tagline>Your Role@your-location</span><span class="mobile-only" data-profile-mobile-tagline>Your Role · Your Location</span></p>
+        </div>
+        <div class="profile-copy">
+          <span class="slash">/whoami</span>
+          <h2><span data-profile-name>YOUR NAME</span> <small data-profile-label>YOUR SPECIALTY</small></h2>
+          <div class="profile-summary">
+            <p data-profile-summary>Write two concise sentences describing what you do, the problems you solve, and the environments where you have the most impact.</p>
+            <span><b>CURRENT FOCUS</b> <span data-profile-focus>Topic one • Topic two • Topic three</span></span>
+          </div>
+          <div class="profile-links" data-profile-links><span>City, Country</span><a href="mailto:hello@example.com">hello@example.com</a><a href="https://www.linkedin.com" target="_blank" rel="noreferrer">linkedin.com/in/your-handle</a><a href="https://example.com" target="_blank" rel="noreferrer">example.com</a></div>
+        </div>
+      </section>
+
+      <nav class="quick-commands" data-quick-commands aria-label="Resume commands">
+        <button data-run="/experience">/experience</button>
+        <button data-run="/context">/context</button>
+        <button data-run="/skills">/skills</button>
+        <button data-run="/impact">/impact</button>
+        <button data-run="/contact">/contact</button>
+      </nav>
+
+      <section class="terminal-output" id="terminal-output" aria-live="polite"></section>
+
+      <section class="effort-panel" id="effort-panel" aria-label="Effort selector" hidden tabindex="-1">
+        <div class="effort-heading"><h2>Model settings</h2><button type="button" id="effort-apply">apply</button></div>
+        <div class="model-settings">
+          <div class="setting-row"><span><strong>Reasoning</strong><small>private thinking before the answer</small></span><button type="button" id="reasoning-toggle" aria-pressed="true">on</button></div>
+          <div class="setting-row"><span><strong>Generation</strong><small>combined reasoning + answer ceiling</small></span><div class="budget-options" role="radiogroup" aria-label="Generation token ceiling"><button type="button" data-budget="0" role="radio">1K</button><button type="button" data-budget="1" role="radio">2K</button><button type="button" data-budget="2" role="radio">4K</button></div></div>
+        </div>
+        <h3>Reasoning depth <small>soft guidance</small></h3>
+        <div class="effort-control">
+          <div class="effort-range-labels"><strong>Faster</strong><strong>Smarter</strong></div>
+          <div class="effort-track"><span class="effort-marker" aria-hidden="true"></span></div>
+          <div class="effort-options" role="radiogroup" aria-label="Effort level">
+            <button type="button" data-effort="0" role="radio">low</button>
+            <button type="button" data-effort="1" role="radio">medium</button>
+            <button type="button" data-effort="2" role="radio">high</button>
+            <button type="button" data-effort="3" role="radio">xhigh</button>
+            <button type="button" data-effort="4" role="radio">max</button>
+          </div>
+        </div>
+        <p class="effort-help">←/→ adjusts depth · Tab moves through settings · Enter applies · Esc cancels</p>
+      </section>
+
+      <div class="terminal-dock">
+        <form class="prompt" id="terminal-form">
+          <label for="terminal-command">›</label>
+          <input id="terminal-command" autocomplete="off" autocapitalize="none" enterkeyhint="send" spellcheck="false" aria-label="Terminal command" placeholder="type /help" />
+          <button type="submit">run</button>
+        </form>
+
+        <footer><span id="mode-indicator" class="mode-status mode-auto" aria-live="polite"><span class="mode-label">▶▶ auto mode on</span> <span class="mode-hint">(shift+tab to cycle)</span></span><button type="button" class="max" id="effort-trigger" aria-label="Change effort level">max</button></footer>
+      </div>
+    </main>
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
