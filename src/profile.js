@@ -24,7 +24,7 @@ export const resumeConfig = {
       { label: 'example.com', href: 'https://example.com' },
     ],
   },
-  quickCommands: ['/experience', '/context', '/skills', '/impact', '/contact'],
+  quickCommands: ['/experience', '/context', '/skills', '/impact', '/pacman', '/contact'],
   jobs: {
     recent: [
       {

@@ -36,6 +36,7 @@ The starter enables a small set of modules:
 /context
 /skills
 /impact
+/pacman
 /contact
 ```
 
@@ -61,7 +62,9 @@ export default defineCommand({
 
 `dataKey` reads matching content from `src/profile.js`. If that field is absent, the command uses `defaults`. The terminal passes both values to `render({ data, profile })`.
 
-Interactive modules can also provide `onRender({ panel, run, input })`. Use it to attach behavior to the rendered panel without changing the terminal engine.
+Interactive modules can also provide `onRender({ panel, run, input })`. Use it to attach behavior to the rendered panel without changing the terminal engine. Return a cleanup function when the module creates timers, event listeners, or page-level state.
+
+`/pacman` is the included interactive example. It keeps the maze, controls, animation, timers, and cleanup inside one command module.
 
 ## Project structure
 

@@ -140,6 +140,7 @@ let localAiProgress = 0;
 let localAiActive = false;
 let localAiBusy = false;
 let localAiMessages = [];
+let activeCommandCleanup = null;
 
 const modes = [
   { className: 'mode-accept', label: '⏵⏵ accept edits on' },
@@ -407,6 +408,8 @@ function run(rawCommand) {
   const raw = rawCommand.trim();
   if (!raw) return;
   const key = canonical(raw);
+  activeCommandCleanup?.();
+  activeCommandCleanup = null;
   if (key === '/effort') {
     openEffort();
   } else if (key === '/clear') {
@@ -415,7 +418,7 @@ function run(rawCommand) {
     output.querySelector('.empty-state')?.remove();
     output.insertAdjacentHTML('beforeend', `<section class="output-block"><div class="output-title"><span>&gt;</span> ${escapeHtml(raw)}</div><div class="output-body">${commandMarkup(key)}</div></section>`);
     const commandPanel = output.lastElementChild;
-    commandRegistry.get(key)?.onRender?.({ panel: commandPanel, run, input });
+    activeCommandCleanup = commandRegistry.get(key)?.onRender?.({ panel: commandPanel, run, input }) || null;
     revealCommandPanel(commandPanel);
     if (key === '/help' || key === '/model') {
       requestAnimationFrame(() => {
@@ -967,7 +970,11 @@ async function askLocalAi(prompt) {
 form.addEventListener('submit', (event) => {
   event.preventDefault();
   const value = input.value.trim();
-  if (localAiActive && value && !value.startsWith('/')) askLocalAi(value);
+  if (localAiActive && value && !value.startsWith('/')) {
+    activeCommandCleanup?.();
+    activeCommandCleanup = null;
+    askLocalAi(value);
+  }
   else run(value);
 });
 document.addEventListener('click', (event) => {

@@ -2,6 +2,7 @@ import contact from './contact.js';
 import context from './context.js';
 import { experienceCommands } from './experience.js';
 import impact from './impact.js';
+import pacman from './pacman.js';
 import skills from './skills.js';
 import whoami from './whoami.js';
 
@@ -13,6 +14,7 @@ export const commandModules = [
   context,
   skills,
   impact,
+  pacman,
   contact,
 ];
 
